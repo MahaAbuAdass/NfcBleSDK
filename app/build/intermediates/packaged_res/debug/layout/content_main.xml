@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/authTypeResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:text="AuthType"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ToggleButton
+        android:id="@+id/bleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp"
+        android:layout_marginTop="32dp"
+        android:text="BLE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/authTypeResult" />
+
+    <ToggleButton
+        android:id="@+id/nfcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:layout_marginTop="24dp"
+        android:text="NFC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/authTypeResult" />
+    <Button
+        android:id="@+id/showCardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:text="Show Card"
+        app:layout_constraintEnd_toStartOf="@+id/bleButton"
+        app:layout_constraintStart_toEndOf="@+id/nfcButton"
+        app:layout_constraintTop_toTopOf="@+id/authTypeResult" />
+
+    <LinearLayout
+        android:id="@+id/text_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authTypeResult"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ble_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/ble_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BLE on"
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/ble_text"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nfc_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/ble_block"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/nfc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NFC on"
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/nfc_text"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/all_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/off_block"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/all_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NFC/BLE on"
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/all_text"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/off_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/nfc_block"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/off_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OFF"
+                android:textSize="12sp"/>
+
+            <EditText
+                android:id="@+id/off_text"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/noti_control_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_option"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:text="set"
+            android:layout_marginTop="0dp"
+            app:layout_constraintWidth_percent="0.33"
+            />
+
+        <Button
+            android:id="@+id/noti_clear_button"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:text="noti clear"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/button"
+            app:layout_constraintWidth_percent="0.33"/>
+
+        <Button
+            android:id="@+id/initBtn"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:text="Stop Service"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/noti_clear_button"
+            app:layout_constraintWidth_percent="0.33"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/noti_control_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="15dp">
+            <Button
+                android:id="@+id/issuecard"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_weight="33.33"
+                android:text="ISSUE CARDS"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/removecard"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/removecard"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_weight="33.33"
+                android:text="REMOVE CARDS"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/issuecard"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Spinner
+                android:id="@+id/list_dropdown"
+                android:layout_width="wrap_content"
+                android:layout_weight="33.33"
+                android:layout_height="43dp"
+                android:spinnerMode="dropdown"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33.33"
+                android:text="Version"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/ble_wait"
+                android:layout_width="wrap_content"
+                android:layout_weight="33.33"
+                android:layout_height="wrap_content"
+                android:text="BLE - Ready"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/version" />
+
+            <TextView
+                android:id="@+id/card_activated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33.33"
+                android:text="none"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ble_wait" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/nfc_hce_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="40.00"
+                android:text="NFC HCE"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_activated" />
+
+            <TextView
+                android:id="@+id/nfc_hce_support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="60.00"
+                android:text="not supported"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintLeft_toRightOf="@id/nfc_hce_label"
+                app:layout_constraintTop_toBottomOf="@id/card_activated" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/action_access_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_weight="50"
+                    android:text="Set AccessLevel"
+                    />
+                <Button
+                    android:id="@+id/get_access_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_weight="50"
+                    android:text="Get AccessLevel"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/accesslevel_handle_result"
+                    android:paddingLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp">
+                </TextView>
+                <TextView
+                    android:id="@+id/get_accesslevel_result"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
+                    android:layout_height="43dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/connectNearestDevice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_weight="50"
+                    android:text="Connect to Nearest Device"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.supremainc.android.mobile_credential_android_sample' // Add this line
+
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "com.supremainc.android.mobile_credential_android_sample"
+        minSdkVersion 23
+        targetSdkVersion 33
+        versionCode 3
+        versionName "2.3"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    ndkVersion '21.4.7075529'
+}
+
+dependencies {
+    implementation files('libs/libsupremaac-2.3.25.aar')
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation "androidx.work:work-runtime:2.7.1"
+
+    // Retrofit
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    // OkHttp
+    def okhttp_version = "4.9.3"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // Room
+    def room_version = "2.5.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
+}
